@@ -6,17 +6,15 @@ padding: 60px 0;
 display: flex;
 justify-content: space-between;    
 img {
-    max-width: 200px;
+    max-width: 212px;
 }
 `;
 
 const Header = () => {
-    return (
-        <HeaderStylized>
-            <img src="/images/logo.png" alt="Foto do logo do SpaceApp" />
-            <TextField />
-        </HeaderStylized>
-    );
+    return (<HeaderStylized>
+        <img src="/images/logo.png" alt="" />
+        <TextField />
+    </HeaderStylized>)
 }
 
 export default Header;

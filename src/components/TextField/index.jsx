@@ -20,7 +20,7 @@ const StyledTextField = styled.input`
     font-weight: 400;
     font-size: 20px;
     line-height: 20px;
-`
+`;
 
 const IconMagnifier = styled.img`
     position: absolute;

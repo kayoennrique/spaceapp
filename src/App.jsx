@@ -12,6 +12,7 @@ const GradientBackground = styled.div`
 `
 
 function App() {
+  
 
   return (
     <GradientBackground>
@@ -20,8 +21,7 @@ function App() {
       <SideBar />
       <Banner 
         text="A galeria mais completa de fotos do espaço!"
-        backgroundImage={bannerBackground}
-         
+        backgroundImage={bannerBackground}         
       /> 
     </GradientBackground>
   )

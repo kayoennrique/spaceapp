@@ -10,7 +10,7 @@ const FigureStylized = styled.figure`
     margin: 0;
     border-radius: 20px;
     max-width: 100%;
-`
+`;
 
 const TitleStylized = styled.h1`
     font-weight: 400;
@@ -19,7 +19,7 @@ const TitleStylized = styled.h1`
     color: #FFFFFF;
     max-width: 300px;
     padding: 0 64px;
-`
+`;
 
 const Banner = ({text, backgroundImage}) => {
     return (<FigureStylized $backgroundImage={backgroundImage}>

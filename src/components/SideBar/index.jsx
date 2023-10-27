@@ -5,7 +5,7 @@ const StyledList = styled.ul`
 list-style: none;
 padding: 0;
 margin: 0;
-width: 200px;
+width: 212px;
 `
 
 const SideBar = () => {
@@ -24,7 +24,25 @@ const SideBar = () => {
                         iconActive="/icons/most-views-active.png"
                         iconInactive="/icons/most-views-inactive.png"
                     >
-                        Mais Vistas
+                        Mais vistas
+                    </ItemNavigation>
+                    <ItemNavigation 
+                        iconActive="/icons/most-likes-active.png" 
+                        iconInactive="/icons/most-likes-inactive.png"
+                    >
+                        Mais curtidas
+                    </ItemNavigation>
+                    <ItemNavigation 
+                        iconActive="/icons/new-active.png" 
+                        iconInactive="/icons/new-inactive.png"
+                    >
+                        Novas
+                    </ItemNavigation>
+                    <ItemNavigation 
+                        iconActive="/icons/surprise-me-active.png" 
+                        iconInactive="/icons/surprise-me-inactive.png"
+                    >
+                        Surpreenda-me
                     </ItemNavigation>
                 </StyledList>
             </nav>
