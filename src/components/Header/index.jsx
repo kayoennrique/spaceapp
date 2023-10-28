@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import TextField from "../TextField"
+import TextField from "../TextField";
 
 const HeaderStylized = styled.header`
 padding: 60px 0;

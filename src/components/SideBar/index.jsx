@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import ItemNavigation from "./ItemNavigation"
+import ItemNavigation from "./ItemNavigation";
 
 const StyledList = styled.ul`
 list-style: none;
 padding: 0;
 margin: 0;
 width: 212px;
-`
+`;
 
 const SideBar = () => {
     return (

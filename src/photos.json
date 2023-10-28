@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Grande Nuvem de Magalhães",
+    "font": "Kayo Space",
+    "path": "/images/gallery/photo-1.png",
+    "id": "1",
+    "tagId": 2
+  },
+  {
+    "title": "Via Láctea",
+    "font": "Kayo Space",
+    "path": "/images/gallery/photo-2.png",
+    "id": "2",
+    "tagId": 2
+  },
+  {
+    "title": "Lua: quarto minguante",
+    "font": "Kayo Space",
+    "path": "/images/gallery/photo-3.png",
+    "id": "3",
+    "tagId": 3
+  },
+  {
+    "title": "Galáxia de Andrómeda",
+    "font": "Kayo Space",
+    "path": "/images/gallery/photo-4.png",
+    "id": "4",
+    "tagId": 2
+  },
+  {
+    "title": "Estrela Pistola",
+    "font": "Kayo Space",
+    "path": "/images/gallery/photo-5.png",
+    "id": "5",
+    "tagId": 1
+  },
+  {
+    "title": "Ilustração",
+    "font": "Kayo Space",
+    "path": "/images/gallery/photo-6.png",
+    "id": "6",
+    "tagId": 4
+  },
+  {
+    "title": "Galáxia de Andrómeda",
+    "font": "Kayo Space",
+    "path": "/images/gallery/photo-7.png",
+    "id": "7",
+    "tagId": 2
+  },
+  {
+    "title": "Ilustração",
+    "font": "Kayo Space",
+    "path": "/images/gallery/photo-8.png",
+    "id": "8",
+    "tagId": 4
+  },
+  {
+    "title": "Céu estrelado",
+    "font": "Kayo Space",
+    "path": "/images/gallery/photo-9.png",
+    "id": "9",
+    "tagId": 1
+  },
+  {
+    "title": "Ilustração",
+    "font": "Kayo Space",
+    "path": "/images/gallery/photo-10.png",
+    "id": "10",
+    "tagId": 1
+  }
+]

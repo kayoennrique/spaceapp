@@ -1,4 +1,4 @@
-import { styled } from "styled-components"
+import { styled } from "styled-components";
 
 const FigureStylized = styled.figure`
     background-image: ${props => `url(${props.$backgroundImage})`};
@@ -10,6 +10,7 @@ const FigureStylized = styled.figure`
     margin: 0;
     border-radius: 20px;
     max-width: 100%;
+    background-size: cover;
 `;
 
 const TitleStylized = styled.h1`

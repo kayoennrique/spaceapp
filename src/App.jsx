@@ -1,28 +1,55 @@
-import styled from "styled-components"
-import GlobalStyles from "./components/GlobalStyles"
-import Header from "./components/Header"
-import SideBar from "./components/SideBar"
-import Banner from "./components/Banner"
-import bannerBackground from './assets/banner.png'
+import styled from "styled-components";
+import GlobalStyles from "./components/GlobalStyles";
+import Header from "./components/Header";
+import SideBar from "./components/SideBar";
+import Banner from "./components/Banner";
+import bannerBackground from './assets/banner.png';
+import Gallery from "./components/Gallery";
+
+import photos from './photos.json';
+import { useState } from "react";
 
 const GradientBackground = styled.div`
   background: linear-gradient(174.61deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
   width: 100%;
   min-height: 100vh;
-`
+`;
 
-function App() {
-  
+const AppContainer = styled.div`
+ width: 1440px;
+ margin: 0 auto;
+ max-width: 100%;
+`;
 
+const MainContainer = styled.main`
+display: flex;
+gap: 24px;
+`;
+
+const ContentGallery = styled.section`
+ display: flex;
+ flex-direction: column;
+ flex-grow: 1;
+`;
+
+const App = () => {
+  const [galleryPhotos, setGalleryPhotos] = useState(photos)
   return (
     <GradientBackground>
       <GlobalStyles />
-      <Header />
-      <SideBar />
-      <Banner 
-        text="A galeria mais completa de fotos do espaço!"
-        backgroundImage={bannerBackground}         
-      /> 
+      <AppContainer>
+        <Header />
+        <MainContainer>
+          <SideBar />
+          <ContentGallery>
+            <Banner
+            text="A galeria mais completa de fotos do espaço!"
+            backgroundImage={bannerBackground}
+          />
+          <Gallery photos={galleryPhotos} />
+          </ContentGallery>          
+        </MainContainer>
+      </AppContainer>
     </GradientBackground>
   )
 }
