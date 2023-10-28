@@ -5,9 +5,9 @@ import SideBar from "./components/SideBar";
 import Banner from "./components/Banner";
 import bannerBackground from './assets/banner.png';
 import Gallery from "./components/Gallery";
-
 import photos from './photos.json';
 import { useState } from "react";
+import ModalZoom from "./components/ModalZoom";
 
 const GradientBackground = styled.div`
   background: linear-gradient(174.61deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
@@ -34,24 +34,33 @@ const ContentGallery = styled.section`
 
 const App = () => {
   const [galleryPhotos, setGalleryPhotos] = useState(photos)
+  const [photoSelected, setPhotoSelected] = useState(null)
+  
   return (
-    <GradientBackground>
-      <GlobalStyles />
-      <AppContainer>
-        <Header />
-        <MainContainer>
-          <SideBar />
-          <ContentGallery>
-            <Banner
-            text="A galeria mais completa de fotos do espaço!"
-            backgroundImage={bannerBackground}
-          />
-          <Gallery photos={galleryPhotos} />
-          </ContentGallery>          
-        </MainContainer>
-      </AppContainer>
-    </GradientBackground>
-  )
-}
-
-export default App;
+      <GradientBackground>
+        <GlobalStyles />
+        <AppContainer>
+          <Header />
+          <MainContainer>
+            <SideBar />
+            <ContentGallery>
+              <Banner
+                text="A galeria mais completa de fotos do espaço!"
+                backgroundImage={bannerBackground}
+              />
+              <Gallery 
+                toSelectedPhoto={photo => setPhotoSelected(photo)} 
+                photos={galleryPhotos}
+              />
+            </ContentGallery>
+          </MainContainer>
+        </AppContainer>
+        <ModalZoom 
+          photo={photoSelected}
+          toClose={() => setPhotoSelected(null)}
+        />
+      </GradientBackground>
+    )
+  }
+  
+  export default App;
