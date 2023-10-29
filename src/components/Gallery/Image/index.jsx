@@ -36,15 +36,23 @@ const Footer = styled.footer`
     align-items: center;
 `;
 
-const Image = ({ photo, expanded = false, toRequestedZoom }) => {
+const Image = ({ photo, expanded = false, toRequestedZoom, whenToggleFavorite }) => {
+
+   // const favoriteIcon = photo.favorite ? '/icons/active-favorite.png' : '/icons/favorite.png'
+   let iconFavorite = '/icons/favorite.png';
+   if (photo.favorite) {
+       iconFavorite = '/icons/active-favorite.png'
+   }
+
+
     return (<Figure $expanded={expanded} id={`photo-${photo.id}`}>
         <img src={photo.path} alt={photo.alt} />
         <figcaption>
             <h3>{photo.title}</h3>
             <Footer>
                 <h4>{photo.font}</h4>
-                <IconButton>
-                    <img src="/icons/favorite.png" alt="Icone de favorito" />
+                <IconButton onClick={() => whenToggleFavorite(photo)}>
+                    <img src={iconFavorite} alt="Icone de favorito" />
                 </IconButton>
                 {!expanded && <IconButton aria-hidden={expanded} onClick={() => toRequestedZoom(photo)}>
                     <img src="/icons/expand.png" alt="Icone de expandir" />

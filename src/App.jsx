@@ -32,9 +32,25 @@ const ContentGallery = styled.section`
  flex-grow: 1;
 `;
 
+
+
 const App = () => {
-  const [galleryPhotos, setGalleryPhotos] = useState(photos)
-  const [photoSelected, setPhotoSelected] = useState(null)
+  const [galleryPhotos, setGalleryPhotos] = useState(photos);
+  const [photoSelected, setPhotoSelected] = useState(null);
+  const whenToggleFavorite = (photo) => {
+    if (photo.id === photoSelected?.id) {
+      setPhotoSelected({
+        ...photoSelected,
+        favorite: !photoSelected.favorite
+      })
+    }
+    setGalleryPhotos(galleryPhotos.map(galleryPhotos => {
+      return {
+        ...galleryPhotos,
+        favorite: galleryPhotos.id === photo.id ? !photo.favorite : galleryPhotos.favorite
+      }
+    }))
+  }
   
   return (
       <GradientBackground>
@@ -50,6 +66,7 @@ const App = () => {
               />
               <Gallery 
                 toSelectedPhoto={photo => setPhotoSelected(photo)} 
+                whenToggleFavorite={whenToggleFavorite}
                 photos={galleryPhotos}
               />
             </ContentGallery>
@@ -58,6 +75,7 @@ const App = () => {
         <ModalZoom 
           photo={photoSelected}
           toClose={() => setPhotoSelected(null)}
+          whenToggleFavorite={whenToggleFavorite}
         />
       </GradientBackground>
     )
