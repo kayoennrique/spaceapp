@@ -6,8 +6,9 @@ import Banner from "./components/Banner";
 import bannerBackground from './assets/banner.png';
 import Gallery from "./components/Gallery";
 import photos from './photos.json';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalZoom from "./components/ModalZoom";
+import Footer from "./components/Footer";
 
 const GradientBackground = styled.div`
   background: linear-gradient(174.61deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
@@ -16,32 +17,55 @@ const GradientBackground = styled.div`
 `;
 
 const AppContainer = styled.div`
- width: 1440px;
- margin: 0 auto;
- max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1440px;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 `;
 
 const MainContainer = styled.main`
-display: flex;
-gap: 24px;
+  display: flex;
+  gap: 24px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const ContentGallery = styled.section`
- display: flex;
- flex-direction: column;
- flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
-
-
 
 const App = () => {
   const [galleryPhotos, setGalleryPhotos] = useState(photos);
-  const [photoSelected, setPhotoSelected] = useState(null);
+  const [filter, setFilter] = useState('')
+  const [tag, setTag] = useState(0)
+  const [photoWithZoom, setPhotoWithZoom] = useState(null)
+
+  useEffect(() => {
+      const photosFiltered = photos.filter(photo => {
+      const filterByTag = !tag || photo.tagId === tag;
+      const filterByTitle = !filter || photo.title.toLowerCase().includes(filter.toLowerCase())
+      return filterByTag && filterByTitle
+    })
+    setGalleryPhotos(photosFiltered)
+  }, [filter, tag])
+
   const whenToggleFavorite = (photo) => {
-    if (photo.id === photoSelected?.id) {
-      setPhotoSelected({
-        ...photoSelected,
-        favorite: !photoSelected.favorite
+    if (photo.id === photoWithZoom?.id) {
+      setPhotoWithZoom({
+        ...photoWithZoom,
+        favorite: !photoWithZoom.favorite
       })
     }
     setGalleryPhotos(galleryPhotos.map(galleryPhotos => {
@@ -53,31 +77,38 @@ const App = () => {
   }
   
   return (
+       
       <GradientBackground>
         <GlobalStyles />
         <AppContainer>
-          <Header />
+          <Header
+          filter={filter}
+          setFilter={setFilter}
+          />
           <MainContainer>
             <SideBar />
             <ContentGallery>
               <Banner
-                text="A galeria mais completa de fotos do espaço!"
-                backgroundImage={bannerBackground}
+              backgroundImage={bannerBackground}
+              text="A galeria mais completa de fotos do espaço!"
               />
               <Gallery 
-                toSelectedPhoto={photo => setPhotoSelected(photo)} 
-                whenToggleFavorite={whenToggleFavorite}
                 photos={galleryPhotos}
+                toSelectedPhoto={photo => setPhotoWithZoom(photo)} 
+                whenToggleFavorite={whenToggleFavorite}                
+                setTag={setTag}
               />
             </ContentGallery>
           </MainContainer>
         </AppContainer>
         <ModalZoom 
-          photo={photoSelected}
-          toClose={() => setPhotoSelected(null)}
+          photo={photoWithZoom}
+          toClose={() => setPhotoWithZoom(null)}
           whenToggleFavorite={whenToggleFavorite}
         />
+        <Footer />
       </GradientBackground>
+      
     )
   }
   

@@ -10,10 +10,11 @@ img {
 }
 `;
 
-const Header = () => {
+const Header = ({ setFilter }) => {
     return (<HeaderStylized>
         <img src="/images/logo.png" alt="" />
-        <TextField />
+        <TextField 
+          setFilter={setFilter}/>
     </HeaderStylized>)
 }
 

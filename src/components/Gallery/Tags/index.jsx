@@ -35,11 +35,11 @@ const Div = styled.div`
     justify-content: end;
 `;
 
-const Tags = () => {
+const Tags = ({setTag}) => {
     return <TagsContainer>
         <TagTitle>Busque por tags:</TagTitle>
         <Div>
-            {tags.map(tag => <Tag key={tag.id}>{tag.title}</Tag>)}
+        {tags.map(tag => <Tag key={tag.id} onClick={() => setTag(tag.tag)}>{tag.title}</Tag>)}
         </Div>
     </TagsContainer>
 }

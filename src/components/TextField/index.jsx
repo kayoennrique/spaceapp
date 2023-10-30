@@ -30,10 +30,10 @@ const IconMagnifier = styled.img`
     height: 38px;
 `;
 
-const TextField = (props) => {
+const TextField = ({ setFilter }) => {
     return (
         <ContainerStylized>
-            <StyledTextField {...props} />
+            <StyledTextField onChange={event => setFilter(event.target.value)} type="text" placeholder="O que você procura?"/>
             <IconMagnifier src={search} alt="ícone de lupa" />
         </ContainerStylized>
     )
