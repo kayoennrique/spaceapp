@@ -20,30 +20,17 @@ const AppContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   max-width: 1440px;
-
-  @media (max-width: 768px) {
-    padding: 0 20px;
-  }
 `;
 
 const MainContainer = styled.main`
   display: flex;
   gap: 24px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
 `;
 
 const ContentGallery = styled.section`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
 `;
 
 const App = () => {
@@ -53,11 +40,12 @@ const App = () => {
   const [photoWithZoom, setPhotoWithZoom] = useState(null)
 
   useEffect(() => {
-      const photosFiltered = photos.filter(photo => {
+    const photosFiltered = photos.filter(photo => {
       const filterByTag = !tag || photo.tagId === tag;
       const filterByTitle = !filter || photo.title.toLowerCase().includes(filter.toLowerCase())
       return filterByTag && filterByTitle
     })
+    
     setGalleryPhotos(photosFiltered)
   }, [filter, tag])
 
